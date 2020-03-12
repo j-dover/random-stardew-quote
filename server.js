@@ -48,7 +48,7 @@ app.get("/api/villagers", (req, res, next) => {
     }
     res.json({
       "Villagers":rows
-    })
+    });
   });
 });
 
@@ -72,3 +72,5 @@ process.on('SIGINT', () => {
     console.log('Current process terminated');
   });
 })
+
+module.exports = server;
