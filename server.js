@@ -5,6 +5,8 @@ const dbImport = require(__dirname + '/db.js');
 const sqlite3 = dbImport.sqlite3;
 let db = dbImport.db;
 
+const apiRouter = require('./routes/api');
+
 const app = express();
 const options = {
   extended: false
@@ -22,6 +24,7 @@ app.get('/', (req, res) => {
   console.log('This is the home page.');
 });
 
+/*
 app.get('/api/quotes', (req, res, next) =>{
   // Get all quotes
   var sql = 'SELECT * from Quotes';
@@ -36,7 +39,8 @@ app.get('/api/quotes', (req, res, next) =>{
     });
   });
 });
-
+*/
+/*
 app.get("/api/villagers", (req, res, next) => {
   // Get all villagers
   var sql = 'SELECT * from Villager';
@@ -51,6 +55,9 @@ app.get("/api/villagers", (req, res, next) => {
     });
   });
 });
+*/
+
+app.use('/api', apiRouter);
 
 app.use(function(req, res){
   console.error("404 Error");
