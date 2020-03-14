@@ -8,7 +8,7 @@ let schema = `CREATE TABLE IF NOT EXISTS Villager (
 
 CREATE TABLE IF NOT EXISTS Quotes (
   quote_id integer PRIMARY KEY AUTOINCREMENT,
-  villager_id integer UNIQUE,
+  villager_id integer,
   quote text NOT NULL UNIQUE,
   FOREIGN KEY (villager_id) REFERENCES Villager(villager_id)
 );`;
