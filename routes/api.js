@@ -1,8 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-var villager_controller = require('../controllers/villagerController');
+var quoteController = require('../controllers/quoteController')
 
-router.get('/villagers', villager_controller.getVillagers);
-router.get('/villager/:villager_id', villager_controller.getVillagerById);
+router.get('/quote/random', quoteController.getRandomQuote);
+router.get('/quotes/random?', quoteController.getRandomNumQuotes);
+
 module.exports = router;
