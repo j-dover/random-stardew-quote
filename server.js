@@ -24,39 +24,6 @@ app.get('/', (req, res) => {
   console.log('This is the home page.');
 });
 
-/*
-app.get('/api/quotes', (req, res, next) =>{
-  // Get all quotes
-  var sql = 'SELECT * from Quotes';
-  db.all(sql, [], (err, rows) => {
-    if (err) {
-      res.status(400).json({"error":err.message});
-      console.error(err.message);
-      return;
-    }
-    res.json({
-      "Quotes":rows
-    });
-  });
-});
-*/
-/*
-app.get("/api/villagers", (req, res, next) => {
-  // Get all villagers
-  var sql = 'SELECT * from Villager';
-  db.all(sql, [], (err, rows) => {
-    if (err) {
-      res.status(400).json({"error":err.message});
-      console.error(err.message);
-      return;
-    }
-    res.json({
-      "Villagers":rows
-    });
-  });
-});
-*/
-
 app.use('/api', apiRouter);
 
 app.use(function(req, res){
