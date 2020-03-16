@@ -5,14 +5,12 @@ var sqlite3 = dbImport.sqlite3;
 
 // Get one random quote
 exports.getRandomQuote = function (req, res) {
-    // Sql query
     let sql = `SELECT quote, villager_name
     FROM Quotes
     LEFT JOIN VIllager ON
     Villager.villager_id = Quotes.villager_id
     ORDER BY random()
     LIMIT 1`;
-    // DB Get
     db.get(sql, [], (err, row) => {
       if (err) {
         console.error(err.message);
