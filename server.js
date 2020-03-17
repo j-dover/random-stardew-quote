@@ -19,6 +19,8 @@ const port = process.env.PORT || 3000;
 
 const server = app.listen(port, () => console.log(`Random Stardew Valley Quote API Server is listening on port ${port}`));
 
+app.use(express.static(__dirname + '/public'));
+
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/public/index.html');
   console.log('This is the home page.');
@@ -32,7 +34,7 @@ app.use(function(req, res){
 });
 
 app.use(function(err, req, res, next) {
-  res.status(500).send("")
+  res.status(500).send({"error": "505 - Internal Error"})
 });
 
 process.on('SIGINT', () => {
