@@ -31,13 +31,15 @@ exports.getRandomNumQuotes = function (req, res) {
   ORDER BY random()
   LIMIT ?`;
 
-  if (req.query.num < 0) {
-    res.status(400).send({"error": "400 - Bad Request. A request must have a nonnegative integer."});
+  if (!req.query.num || req.query.num === null) {
+    console.error("400 Error - Bad Request");
+    res.status(400).send({"error": "400 - Bad Request. The num query cannot be missing, empty, or null."});
     return;
   }
 
-  if (!req.query.num || req.query.num == null || isNaN(req.query.num)) {
-    res.status(400).send({"error": "400 - Bad Request"});
+  if (isNaN(req.query.num) || req.query.num < 0 || (req.query.num % 1 > 0 && req.query.num % 1 < 1)) {
+    console.error("400 Error - Bad Request");
+    res.status(400).send({"error": "400 - Bad Request. The num query must contain a nonnegative integer."});
     return;
   }
 
