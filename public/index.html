@@ -27,7 +27,7 @@
         <div class="single-quote">
           <h3>Single Quote</h3>
           <p>To retrieve a single quote, use the following URL in a GET request:</p>
-          <p><code class="request-code">http://localhost:3000/api/quote/random</code></p>
+          <p><code class="request-code">http://localhost:3000/api/quote</code></p>
           <p>Example of JSON response:</p>
           <div class="json-block">
             <code>{"random_quote":{"quote":"You see... My body has departed this world, but my heart will always remain in Stardew Valley.","villager_name":"Grandpa"}}</code>
@@ -38,8 +38,8 @@
           <p>To retrieve multiple quotes, use the following URL in a GET request and replace <code class="request-code">:num</code>
             with your desired number of quotes.
           </p>
-          <p><code class="request-code">http://localhost:3000/api/quotes/random?num=:num</code></p>
-          <p>Example of a JSON response from http://localhost:3000/api/quotes/random?num=3 to retrieve three quotes:</p>
+          <p><code class="request-code">http://localhost:3000/api/quotes?num=:num</code></p>
+          <p>Example of a JSON response from http://localhost:3000/api/quotes?num=3 to retrieve three quotes:</p>
           <div class="json-block">
               <code>{"random_quotes":[{"quote":"Keep your mind open and some interesting things might take root. Anyway, how is your day going?","villager_name":"Emily"},
                 {"quote":"Everyone seems a little happier on the weekends, don't you think? I'm on the job seven days a week, though.","villager_name":"Lewis"},
