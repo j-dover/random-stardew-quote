@@ -11,7 +11,7 @@ let server = require('../server.js');
 let should = require('chai').should();
 let expect = require('chai').expect;
 
-// Unit Tests
+// Integration Tests
 describe('Homepage', () => {
   describe('/GET HTML Homepage', () => {
     it('it should GET the HTML homepage', (done) => {
@@ -40,32 +40,152 @@ describe('404 Error', () => {
   })
 })
 
-describe('All Villagers', () => {
-  describe('/GET JSON of All Villagers', () => {
-      it('It should GET a JSON of all villagers', (done) => {
+describe('Get Single Quote', () => {
+  describe('/GET JSON of One Random Quote', () => {
+      it('It should GET a JSON of a single random quote', (done) => {
         chai.request(server)
-        .get('/api/villagers')
+        .get('/api/quote')
         .end((err, res) => {
           expect(res.status).to.equal(200);
           expect(res).to.be.json;
-          expect(res.body).to.have.ownProperty('Villagers').that.includes.all.keys(['0']);
+          expect(res.body).to.have.ownProperty('random_quote');
+          expect(res.body.random_quote).to.have.ownProperty('quote');
+          expect(res.body.random_quote.quote).to.be.a('string');
+          expect(res.body.random_quote).to.have.ownProperty('villager_name');
+          expect(res.body.random_quote.villager_name).to.be.a('string');
           done();
         });
       });
   });
 });
 
-describe('All Quotes', () => {
-  describe('/GET JSON of All Quotes', () => {
-      it('It should GET a JSON of all quotes', (done) => {
+describe('Get Single Quote with the Multiple Quote Route', () => {
+  describe('/GET JSON of One Random Quote using api/quotes/random?', () => {
+      it('It should GET a JSON of a single random quote', (done) => {
         chai.request(server)
         .get('/api/quotes')
+        .query({num: 1})
         .end((err, res) => {
           expect(res.status).to.equal(200);
           expect(res).to.be.json;
-          expect(res.body).to.have.ownProperty('Quotes').that.includes.all.keys(['0']);
+          expect(res.body).to.have.ownProperty('random_quotes').that.includes.all.keys(['0']);
+          expect(res.body.random_quotes.length).to.equal(1);
+          expect(res.body.random_quotes[0]).to.have.ownProperty('quote');
+          expect(res.body.random_quotes[0]).to.have.ownProperty('villager_name');
           done();
         });
       });
+  });
+});
+
+describe('Get Multiple Quotes', () => {
+  describe('/GET JSON of Multiple Random Quotes', () => {
+      it('It should GET a JSON of 3 random quotes', (done) => {
+        chai.request(server)
+        .get('/api/quotes')
+        .query({num: 3})
+        .end((err, res) => {
+          expect(res.status).to.equal(200);
+          expect(res).to.be.json;
+          expect(res.body).to.have.ownProperty('random_quotes').that.includes.all.keys(['0', '1', '2']);
+          expect(res.body.random_quotes[0]).to.have.ownProperty('quote');
+          expect(res.body.random_quotes[0]).to.have.ownProperty('villager_name');
+          expect(res.body.random_quotes[1]).to.have.ownProperty('quote');
+          expect(res.body.random_quotes[1]).to.have.ownProperty('villager_name');
+          expect(res.body.random_quotes[2]).to.have.ownProperty('quote');
+          expect(res.body.random_quotes[2]).to.have.ownProperty('villager_name');
+          expect(res.body.random_quotes.length).to.equal(3);
+          done();
+        });
+      });
+  });
+});
+
+describe('Get 0 Quotes', () => {
+  describe('/GET JSON containing 0 quotes', () => {
+      it('It should GET a JSON that contains an empty array', (done) => {
+        chai.request(server)
+        .get('/api/quotes')
+        .query({num: 0})
+        .end((err, res) => {
+          expect(res.status).to.equal(200);
+          expect(res).to.be.json;
+          expect(res.body).to.have.ownProperty('random_quotes');
+          expect(res.body.random_quotes).to.be.an('array');
+          expect(res.body.random_quotes.length).to.equal(0);
+          done();
+        });
+      });
+  });
+});
+
+describe('Get Errors for Invalid Input in Num', () => {
+  describe('/Get JSON with bad request error when num < 0', () => {
+    it('It should GET a JSON with a 400 error for bad request, number less than 0', (done) => {
+      chai.request(server)
+      .get('/api/quotes')
+      .query({num: -1})
+      .end((err, res) => {
+        expect(res.status).to.equal(400);
+        expect(res).to.be.json;
+        expect(res.body).to.have.ownProperty('error');
+        done();
+      })
+    })
+  });
+
+  describe('/Get JSON with bad request error when num query is empty', () => {
+    it('It should GET a JSON with a 400 error for bad request', (done) => {
+      chai.request(server)
+      .get('/api/quotes')
+      .end((err, res) => {
+        expect(res.status).to.equal(400);
+        expect(res).to.be.json;
+        expect(res.body).to.have.ownProperty('error');
+        done();
+      })
+    })
+  });
+
+  describe('/Get JSON with bad request error when num query is null"', () => {
+    it('It should GET a JSON with a 400 error for bad request', (done) => {
+      chai.request(server)
+      .get('/api/quotes')
+      .query({num: null})
+      .end((err, res) => {
+        expect(res.status).to.equal(400);
+        expect(res).to.be.json;
+        expect(res.body).to.have.ownProperty('error');
+        done();
+      })
+    })
+  });
+
+  describe('/Get JSON with bad request error when num = "test"', () => {
+    it('It should GET a JSON with a 400 error for bad request', (done) => {
+      chai.request(server)
+      .get('/api/quotes')
+      .query({num: "test"})
+      .end((err, res) => {
+        expect(res.status).to.equal(400);
+        expect(res).to.be.json;
+        expect(res.body).to.have.ownProperty('error');
+        done();
+      })
+    })
+  });
+
+  describe('/Get JSON with bad request error when num = 1.5', () => {
+    it('It should GET a JSON with a 400 error for bad request', (done) => {
+      chai.request(server)
+      .get('/api/quotes')
+      .query({num: 1.5})
+      .end((err, res) => {
+        expect(res.status).to.equal(400);
+        expect(res).to.be.json;
+        expect(res.body).to.have.ownProperty('error');
+        done();
+      })
+    })
   });
 });
