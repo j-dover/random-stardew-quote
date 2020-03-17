@@ -17,7 +17,7 @@ exports.getRandomQuote = function (req, res) {
         res.status(400).send({"error": err.message});
         return;
       }
-      res.json({"Quote": row});
+      res.json({"random_quote": row});
     });
 }
 
@@ -40,6 +40,6 @@ exports.getRandomNumQuotes = function (req, res) {
       res.status(400).send({"error": err.message});
       return;
     }
-    res.json({"Quotes": rows});
+    res.json({"random_quotes": rows});
   })
 }
