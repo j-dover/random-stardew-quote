@@ -30,10 +30,17 @@ exports.getRandomNumQuotes = function (req, res) {
   Villager.villager_id = Quotes.villager_id
   ORDER BY random()
   LIMIT ?`;
-  if (req.query.num < 0 || req.query.num === null) {
-    res.json({"error": "Invalid number. Please enter a nonnegative integer."});
+
+  if (req.query.num < 0) {
+    res.status(400).send({"error": "400 - Bad Request. A request must have a nonnegative integer."});
     return;
   }
+
+  if (!req.query.num || req.query.num == null) {
+    res.status(400).send({"error:": "400 - Bad Request"});
+    return;
+  }
+
   db.all(sql, [req.query.num], (err, rows) => {
     if (err) {
       console.error(err.message);
