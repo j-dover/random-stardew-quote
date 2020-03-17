@@ -2,16 +2,61 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Random Stardew Valley Quote API</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="/styles/style.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&family=Roboto+Slab&display=swap" rel="stylesheet">
   </head>
   <body>
-    <header><h1>Random Stardew Valley Quote API</h1></header>
-    <div class="main">
-      <div id="about">
+    <div class="header container">
+      <h1>Random Stardew Valley Quote API</h1>
+    </div>
+    <div class="main container">
+      <div class="about">
         <h2>About</h2>
-        <p>Random Stardew Valley Quote API is an API that can retrieve random
-          quotes from Stardew Valley in JSON. </p>
+        <hr>
+        <p>Random Stardew Valley Quote API is an API that can retrieve random quotes from the video game <a href="https://www.stardewvalley.net/" target="_blank">Stardew Valley</a>. Each API request returns a JSON response.</p>
+        <p>You can find more quotes by checking out the <a href="https://stardewvalleywiki.com/Stardew_Valley_Wiki" target="_blank">Stardew Valley Wiki.</a></p>
+        <p>Random Stardew Valley Quote API is a fan-made project created for learning and personal use. This API is
+          not produced, endorsed, supported, or affiliated with ConcernedApe.</p>
+      </div>
+      <div class="usage">
+        <h2>Using the API</h2>
+        <hr>
+        <div class="single-quote">
+          <h3>Single Quote</h3>
+          <p>To retrieve a single quote, use the following URL in a GET request:</p>
+          <p><code class="request-code">http://localhost:3000/api/quote/random</code></p>
+          <p>Example of JSON response:</p>
+          <div class="json-block">
+            <code>{"random_quote":{"quote":"You see... My body has departed this world, but my heart will always remain in Stardew Valley.","villager_name":"Grandpa"}}</code>
+          </div>
+        </div>
+        <div class="multiple-quotes">
+          <h3>Multiple Quotes</h3>
+          <p>To retrieve multiple quotes, use the following URL in a GET request and replace <code class="request-code">:num</code>
+            with your desired number of quotes.
+          </p>
+          <p><code class="request-code">http://localhost:3000/api/quotes/random?num=:num</code></p>
+          <p>Example of JSON response containing multiple quotes:</p>
+          <div class="json-block">
+              <code>{"random_quotes":[{"quote":"Keep your mind open and some interesting things might take root. Anyway, how is your day going?","villager_name":"Emily"},
+                {"quote":"Everyone seems a little happier on the weekends, don't you think? I'm on the job seven days a week, though.","villager_name":"Lewis"},
+                {"quote":"The flow of time is so delicate... even the tiniest decision changes the future forever.","villager_name":"Leah"}]}
+              </code>
+          </div>
+        </div>
+      </div>
+      <div class="source-code">
+        <h2>Source Code</h2>
+        <hr>
+        <p><a href="https://github.com/j-dover/random-stardew-quote" target="_blank" role="button">API Source Code</a></p>
       </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   </body>
 </html>

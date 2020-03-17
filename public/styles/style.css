@@ -1,0 +1,60 @@
+body {
+  background: rgb(0,57,115);
+  background: -moz-linear-gradient(180deg, rgba(0,57,115,1) 0%, rgba(2,96,186,1) 35%, rgba(93,220,230,1) 100%);
+  background: -webkit-linear-gradient(180deg, rgba(0,57,115,1) 0%, rgba(2,96,186,1) 35%, rgba(93,220,230,1) 100%);
+  background: linear-gradient(180deg, rgba(0,57,115,1) 0%, rgba(2,96,186,1) 35%, rgba(93,220,230,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#003973",endColorstr="#5ddce6",GradientType=1);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100%;
+}
+
+
+
+.header h1 {
+  font-family: 'Roboto Slab', serif;
+  color: #E0A100;
+  text-align: center;
+  text-shadow: 1px 2px #853605;
+  padding: 1rem 0rem 1rem 0rem;
+}
+
+.main.container {
+  outline: solid #853605;
+  border: solid #FA9305;
+  background: #F3B266;
+  padding: 1em 2em 1em 2em;
+  margin-bottom: 2em;
+}
+
+.about, .usage, .source-code {
+  margin: 1em 0em 2em 0em;
+}
+
+.single-quote {
+  margin: 1em 0em 2em 0em;
+}
+
+.multiple-quotes {
+  margin: 1em 0em 1em 0em;
+}
+
+h2, h3, p {
+  color: #56160C;
+  font-family: 'Roboto Condensed', sans-serif;
+  text-justify: auto;
+}
+
+.about a, .source-code a {
+  text-decoration: none;
+}
+
+code.request-code {
+  background: #FFD284;
+  padding: 0.5em;
+}
+
+.json-block {
+  background: #FFD284;
+  padding: 0.5em 0.5em 0.5em 0.5em;
+}
