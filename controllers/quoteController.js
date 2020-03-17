@@ -36,8 +36,8 @@ exports.getRandomNumQuotes = function (req, res) {
     return;
   }
 
-  if (!req.query.num || req.query.num == null) {
-    res.status(400).send({"error:": "400 - Bad Request"});
+  if (!req.query.num || req.query.num == null || isNaN(req.query.num)) {
+    res.status(400).send({"error": "400 - Bad Request"});
     return;
   }
 
