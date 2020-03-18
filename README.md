@@ -8,4 +8,4 @@ You can find more quotes by checking out the [Stardew Valley Wiki](https://stard
 Random Stardew Valley Quote API is a fan-made project created for learning and personal use. This API is not produced, endorsed, supported, or affiliated with ConcernedApe.
 
 ## API Website
-Visit [Random Stardew Valley API]() on Glitch to learn and use the API.
+Visit [Random Stardew Valley API](https://random-stardew-quote.glitch.me/) on Glitch to learn and use the API.
