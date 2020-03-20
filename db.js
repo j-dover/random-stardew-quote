@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS Quotes (
   FOREIGN KEY (villager_id) REFERENCES Villager(villager_id)
 );`;
 
-let db = new sqlite3.Database('./random-stardew-quotes.db', (err) => {
+let db = new sqlite3.Database('.data/random-stardew-quotes.db', (err) => {
   if (err) {
     console.error(err.message);
     return;

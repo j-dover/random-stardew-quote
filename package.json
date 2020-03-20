@@ -10,6 +10,7 @@
   "author": "Jennifer Aldover",
   "license": "MIT",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "sqlite3": "^4.1.1"
   },
