@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const dbImport = require(__dirname + '/db.js');
 const sqlite3 = dbImport.sqlite3;
 let db = dbImport.db;
-
+const cors = require('cors');
 const apiRouter = require('./routes/api');
 
 const app = express();
@@ -14,6 +14,7 @@ const options = {
 app.use(bodyParser.urlencoded(options));
 app.use(bodyParser.json());
 app.use(express.static("public"));
+app.use(cors({credentials: true, origin: true}));
 
 const port = process.env.PORT || 3000;
 
