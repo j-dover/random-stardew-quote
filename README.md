@@ -1,7 +1,7 @@
 # Random Stardew Valley Quote API
 
 ## About
-Random Stardew Valley Quote API is an API that can retrieve random quotes from the video game [Stardew Valley](https://www.stardewvalley.net/). Each API request returns a JSON response.
+Random Stardew Valley Quote API is a RESTful API that can retrieve random quotes from the video game [Stardew Valley](https://www.stardewvalley.net/). Each API request returns a JSON response.
 
 You can find more quotes by checking out the [Stardew Valley Wiki](https://stardewvalleywiki.com/Stardew_Valley_Wiki).
 
